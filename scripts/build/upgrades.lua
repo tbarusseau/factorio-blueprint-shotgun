@@ -30,7 +30,7 @@ function lib.process(params)
 
         local connection
         if entity.type == "underground-belt" then
-            connection = entity.underground_belt_neighbour
+            connection = entity.neighbours
             if connection and connection.type == "underground-belt" then
                 -- impossible for connection to not be marked for upgrade so no need to check
                 item.count = item.count * 2

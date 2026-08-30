@@ -280,4 +280,4 @@ end
 require("compatibility/AmmoGroup")
 require("compatibility/bobelectronics")
 require("compatibility/PlanetsLib")
-require("compatibility/Ultracube")
+require("compatibility/ultracube")
