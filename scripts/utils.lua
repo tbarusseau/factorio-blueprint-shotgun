@@ -79,7 +79,7 @@ function utils.get_flying_item_duration(source_pos, target_pos)
 end
 
 ---@return number
-function utils.orientation_deviaiton()
+function utils.orientation_deviation()
     return (math.random() - 0.5) / 10
 end
 
@@ -149,7 +149,7 @@ function utils.spill_products(surface, position, prototype, force)
             if product.amount then
                 c = c + 1
                 stacks[c] = {name = product.name, count = product.amount}
-            elseif math.random() <= product.probability then
+            elseif math.random() <= product.independent_probability then
                 c = c + 1
                 stacks[c] = {
                     name = product.name,

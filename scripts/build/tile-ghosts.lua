@@ -52,7 +52,7 @@ function lib.process(params)
             target_pos = ghost.position,
             start_tick = params.tick,
             end_tick = params.tick + duration,
-            orientation_deviation = utils.orientation_deviaiton(),
+            orientation_deviation = utils.orientation_deviation(),
             sprite = sprite,
             shadow = shadow,
             target_entity = ghost,
@@ -78,17 +78,22 @@ function lib.action(item)
     if target_entity.valid then
         local surface = item.surface
         local position = target_entity.position
+
         ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
-        local prototype = surface.get_tile(position).prototype
-        if not prototype.allows_being_covered then
-            utils.spill_products(surface, position, prototype, item.force)
+        local old = surface.get_tile(position)
+        if old.prototype.is_foundation == target_entity.ghost_prototype.is_foundation then
+            local character = utils.temp_character(surface, target_entity.force)
+            character.mine_tile(old)
+            surface.spill_inventory{
+                inventory = character.get_main_inventory() --[[@as LuaInventory]],
+                position = position,
+                force = target_entity.force,
+                allow_belts = false,
+            }
+            character.destroy()
         end
+
         target_entity.revive{raise_revive = true}
-        ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
-        local new_tile = surface.get_tile(position)
-        if new_tile.hidden_tile ~= prototype.name then
-            utils.spill_products(surface, position, prototype, item.force)
-        end
     else
         utils.spill_item(item)
     end
@@ -101,3 +106,5 @@ return lib
 ---@field action "tile"
 ---@field target_entity LuaEntity
 ---@field unit_number uint
+
+-- TODO: change utils.spill_products to use LuaControl::mine_tile
