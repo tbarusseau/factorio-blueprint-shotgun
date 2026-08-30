@@ -76,10 +76,32 @@ function lib.process(params)
     return used
 end
 
+---@param entity LuaEntity
+---@return ItemStackDefinition?
+local function old_form_stack(entity)
+    local place_item = entity.prototype.items_to_place_this[1]
+    if not place_item then return end
+    return {
+        name = place_item.name,
+        count = place_item.count,
+        quality = entity.quality.name,
+        health = entity.get_health_ratio() or 1,
+    }
+end
+
 ---@param item FlyingUpgradeItem
 local function upgrade(item)
     local entity = item.target_entity --[[@as LuaEntity]]
     if not (entity.valid and entity.to_be_upgraded) then return end
+
+    local old_stack = old_form_stack(entity)
+
+    local connection = item.connection
+    local connection_position, connection_old_stack
+    if connection and connection.valid then
+        connection_position = connection.position
+        connection_old_stack = old_form_stack(connection)
+    end
 
     local success = entity.apply_upgrade()
 
@@ -87,6 +109,12 @@ local function upgrade(item)
         if entity.valid then entity.cancel_upgrade(entity.force) end
     else
         success.surface.play_sound { path = 'entity-build/' .. success.name, position = success.position }
+        if old_stack then
+            item.surface.spill_item_stack{position = item.target_pos, stack = old_stack, force = item.force, allow_belts = false}
+        end
+        if connection_old_stack then
+            item.surface.spill_item_stack{position = connection_position, stack = connection_old_stack, force = item.force, allow_belts = false}
+        end
     end
 
     return success
