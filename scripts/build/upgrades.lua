@@ -30,7 +30,7 @@ function lib.process(params)
 
         local connection
         if entity.type == "underground-belt" then
-            connection = entity.neighbours
+            connection = entity.underground_belt_neighbour
             if connection and connection.type == "underground-belt" then
                 -- impossible for connection to not be marked for upgrade so no need to check
                 item.count = item.count * 2
@@ -55,7 +55,7 @@ function lib.process(params)
             target_pos = entity.position,
             start_tick = params.tick,
             end_tick = params.tick + duration,
-            orientation_deviation = utils.orientation_deviaiton(),
+            orientation_deviation = utils.orientation_deviation(),
             target_entity = entity,
             unit_number = entity.unit_number,
             sprite = sprite,

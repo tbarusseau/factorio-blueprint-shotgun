@@ -79,7 +79,7 @@ return function(params)
                 position = target.position,
                 velocity = vec.random(1/15),
                 height = 0,
-                orientation_deviation = utils.orientation_deviaiton(),
+                orientation_deviation = utils.orientation_deviation(),
                 sprite = sprite,
                 shadow = shadow,
                 deconstruct = params.character.force,
