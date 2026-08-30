@@ -1,7 +1,7 @@
 data:extend{{
     type = "gun",
     name = "blueprint-shotgun",
-    icon = "__blueprint-shotgun__/graphics/blueprint-shotgun.png",
+    icon = "__blueprint-shotgun-redux__/graphics/blueprint-shotgun.png",
     stack_size = 1,
     attack_parameters = {
         type = "projectile",
@@ -18,7 +18,7 @@ data:extend{{
 data:extend{{
     type = "ammo",
     name = "item-canister",
-    icon = "__blueprint-shotgun__/graphics/item-canister.png",
+    icon = "__blueprint-shotgun-redux__/graphics/item-canister.png",
     stack_size = 200,
     magazine_size = 25,
     ammo_category = "blueprint-ammo",
@@ -42,7 +42,7 @@ data:extend{{
 data:extend{{
     type = "ammo-category",
     name = "blueprint-ammo",
-    icon = "__blueprint-shotgun__/graphics/item-canister.png",
+    icon = "__blueprint-shotgun-redux__/graphics/item-canister.png",
     subgroup = "ammo-category",
 }} --[[@as data.AmmoCategory[] ]]
 
@@ -74,7 +74,7 @@ data:extend{{
 data:extend{{
     type = "technology",
     name = "blueprint-shotgun",
-    icon = "__blueprint-shotgun__/graphics/blueprint-shotgun.png",
+    icon = "__blueprint-shotgun-redux__/graphics/blueprint-shotgun.png",
     icon_size = 64,
     effects = {{
         type = "unlock-recipe",
@@ -103,7 +103,7 @@ data:extend{{
     type = "sound",
     name = "blueprint-shotgun-shoot",
     category = "game-effect",
-    filename = "__blueprint-shotgun__/sounds/shoot.wav",
+    filename = "__blueprint-shotgun-redux__/sounds/shoot.wav",
     min_speed = 0.95,
     max_speed = 1.05,
     game_controller_vibration_data =
@@ -115,7 +115,7 @@ data:extend{{
     type = "sound",
     name = "blueprint-shotgun-vacuum-start",
     category = "game-effect",
-    filename = "__blueprint-shotgun__/sounds/vacuum-start.wav",
+    filename = "__blueprint-shotgun-redux__/sounds/vacuum-start.wav",
     game_controller_vibration_data = {
         high_frequency_vibration_intensity = 0.6,
         duration = 100,
@@ -125,7 +125,7 @@ data:extend{{
 data:extend{{
     type = "sprite",
     name = "item-shadow",
-    filename = "__blueprint-shotgun__/graphics/item-shadow.png",
+    filename = "__blueprint-shotgun-redux__/graphics/item-shadow.png",
     size = 16,
     draw_as_shadow = true,
 }} --[[@as data.SpritePrototype[] ]]
@@ -136,7 +136,7 @@ data:extend{{
     flags = {"not-on-map", "placeable-off-grid"},
     acceleration = 0.01,
     animation = {
-        filename = "__blueprint-shotgun__/graphics/vacuum-smoke.png",
+        filename = "__blueprint-shotgun-redux__/graphics/vacuum-smoke.png",
         -- draw_as_glow = true,
         frame_count = 16,
         width = 50,
@@ -167,13 +167,13 @@ for i = 1, 2 do
     data:extend{{
         type = "technology",
         name = "blueprint-shotgun-upgrade-" .. i,
-        icon = "__blueprint-shotgun__/graphics/blueprint-shotgun.png",
+        icon = "__blueprint-shotgun-redux__/graphics/blueprint-shotgun.png",
         icon_size = 64,
         effects = {{
             type = "nothing",
             effect_description = {"blueprint-shotgun.capacity-upgrade"},
             icons = {{
-                icon = "__blueprint-shotgun__/graphics/item-canister.png",
+                icon = "__blueprint-shotgun-redux__/graphics/item-canister.png",
             }, {
                 icon = "__core__/graphics/icons/technology/constants/constant-capacity.png",
                 icon_size = 128,
@@ -185,7 +185,7 @@ for i = 1, 2 do
             type = "nothing",
             effect_description = {"blueprint-shotgun.vacuum-upgrade"},
             icons = {{
-                icon = "__blueprint-shotgun__/graphics/blueprint-shotgun.png"
+                icon = "__blueprint-shotgun-redux__/graphics/blueprint-shotgun.png"
             }, {
                 icon = "__core__/graphics/icons/technology/constants/constant-speed.png",
                 icon_size = 128,
@@ -211,7 +211,7 @@ for i = 1, 160 do
         type = "sound",
         name = "blueprint-shotgun-vacuum-" .. i,
         category = "game-effect",
-        filename = "__blueprint-shotgun__/sounds/vacuum/vacuum-" .. i .. ".wav",
+        filename = "__blueprint-shotgun-redux__/sounds/vacuum/vacuum-" .. i .. ".wav",
         game_controller_vibration_data = {
             low_frequency_vibration_intensity = 0.4,
             duration = 100,
@@ -222,7 +222,7 @@ end
 data:extend{{
     type = "armor",
     name = "blueprint-shotgun-dummy-armor",
-    icon = "__blueprint-shotgun__/graphics/blueprint-shotgun.png",
+    icon = "__blueprint-shotgun-redux__/graphics/blueprint-shotgun.png",
     infinite = true,
     stack_size = 1,
     hidden = true,
@@ -240,7 +240,7 @@ data:extend{{
         running = util.empty_sprite(),
         running_with_gun = {
             direction_count = 18,
-            filename = "__blueprint-shotgun__/graphics/running-with-gun.png",
+            filename = "__blueprint-shotgun-redux__/graphics/running-with-gun.png",
             size = 1,
         },
         mining_with_tool = util.empty_sprite(),
