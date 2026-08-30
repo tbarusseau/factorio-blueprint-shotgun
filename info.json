@@ -1,11 +1,11 @@
 {
-    "name": "blueprint-shotgun",
-    "version": "0.3.5",
-    "title": "Blueprint Shotgun",
+    "name": "blueprint-shotgun-redux",
+    "version": "0.3.6",
+    "title": "Blueprint Shotgun Redux",
     "author": "_CodeGreen",
     "contact": "Discord: @_codegreen",
-    "description": "Adds a gun that shoots items to build ghosts, upgrade entities, and more!\nAlso features a vacuum mode to mine entities, tiles, and ground items.\nAn alternative to nanobots or other early bot start mods.",
-    "factorio_version": "2.1",
+    "description": "Adds a gun that shoots items to build ghosts, upgrade entities, and more!\nAlso features a vacuum mode to mine entities, tiles, and ground items.\nAn alternative to nanobots or other early bot start mods. This variant of the mod fixes issues related to the upgrade planner.",
+    "factorio_version": "2.0",
     "dependencies": [
         "base >= 1.1.105",
         "(?) apm_lib_ldinc",
